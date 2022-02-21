@@ -83,9 +83,8 @@
       "use strict";
 
       const DEFAULT_PORTFOLIOS = [
-        { name: "Holdings", symbols: ["ALGO-ALGORAND", "SHIB-SHIBA-INU", "XYO-XYO-NETWORK", "ACH-ALCHEMY-PAY"] },
+        { name: "Holdings", symbols: ["ALGO-ALGORAND", "SHIB-SHIBA-INU", "XYO-XYO-NETWORK", "ACH-ALCHEMY-PAY", "CRO-CRYPTOCOM-CHAIN"] },
         { name: "Top 5", symbols: ["BTC-BITCOIN", "ETH-ETHEREUM", "BNB-BINANCE-COIN", "USDT-TETHER", "SOL-SOLANA"] },
-        { name: "Top 10", symbols: ["ADA-CARDANO", "HEX-HEX", "XRP-XRP", "USDC-USD-COIN", "DOT-POLKADOT"] },
       ];
 
       const PORTFOLIOS = portfoliosFromQueryParams() || DEFAULT_PORTFOLIOS;
@@ -190,13 +189,13 @@
                   return;
 
                 let formattedPrice = formatQuote(Number(data.close));
-                let formattedChange = formatChange((data.open - data.close));
+                let formattedChange = formatChange((data.close - data.open));
                 let formattedChangePercent = formatChangePercent(
-                  (data.open - data.close) / data.open
+                  (data.close - data.open) / data.open
                 );
                 let formattedMarketCap = formatMarketCap(data.market_cap);
                 let bgColorStyle = calculateBgColorStyle(
-                  (data.open - data.close) / data.open
+                  (data.close - data.open) / data.open
                 );
 
                 document
